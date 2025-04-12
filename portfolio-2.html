@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehta & Associates | Trusted Chartered Accountants</title>
+    <style>
+        /* Modern Professional Color Palette */
+        /* ======== COLOR SCHEME VARIATIONS ======== */
+        /* Scheme 1: Professional Blue (Default) */
+        :root {
+            --primary: #2563EB;   /* Royal blue */
+            --secondary: #059669; /* Emerald green */
+            --dark: #1E293B;      /* Navy blue */
+            --light: #F8FAFC;     /* Light gray */
+            --accent: #F59E0B;    /* Amber */
+            --text: #334155;      /* Dark gray */
+        }
+
+        /* Scheme 2: Corporate Teal */
+        .color-scheme-teal {
+            --primary: #0E7490;   /* Deep teal */
+            --secondary: #5D5FEF; /* Indigo */
+            --dark: #164E63;      /* Dark teal */
+            --accent: #D97706;    /* Ochre */
+        }
+
+        /* Scheme 3: Trustworthy Maroon */
+        .color-scheme-maroon {
+            --primary: #9F1239;   /* Maroon */
+            --secondary: #6D28D9; /* Purple */
+            --dark: #5B0B15;     /* Dark maroon */
+            --accent: #B45309;   /* Brown */
+        }
+
+        
+        
+        /* ========== GLOBAL STYLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            color: var(--text);
+            background: var(--light);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+            color: var(--dark);
+        }
+        a {
+            text-decoration: none;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        .btn-outline:hover {
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+
+        /* ======== WHATSAPP FLOATING BUTTON ======== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+        }
+        .whatsapp-float i {
+            font-size: 32px;
+        }
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            background: white;
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+        }
+
+        /* ======== COLOR SCHEME SWITCHER ======== */
+        .color-switcher {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: white;
+            border-radius: 50px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 100;
+            display: flex;
+            gap: 8px;
+        }
+        .color-option {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            transition: transform 0.3s;
+        }
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        .color-option.blue {
+            background: #2563EB;
+        }
+        .color-option.teal {
+            background: #0E7490;
+        }
+        .color-option.maroon {
+            background: #9F1239;
+        }
+
+        /* ========== NAVIGATION ========== */
+        /* First-Client Special: Subtle but memorable */
+        .navbar {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 18px 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        /* Logo - Designed for trust */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        .logo-text span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+        /* Nav Links - Clean and professional */
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+        .nav-cta {
+            margin-left: 20px;
+        }
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* ===== Mobile Responsive ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 20px;
+                gap: 25px;
+                transition: left 0.3s;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .nav-cta {
+                margin: 10px 0 0;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        /* ===== HERO SECTION WITH CIRCULAR PORTRAIT ===== */
+        header {
+            padding: 100px 0 120px;
+            background: linear-gradient(135deg, #F8FAFC, #EFF6FF);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .hero-content {
+            width: 55%;
+            padding-right: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-image {
+            width: 45%;
+            display: flex;
+            /* justify-content: flex-end; */
+            position: relative;
+            z-index: 2;
+        }
+        
+        .ca-portrait {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateX(20%);
+        }
+        
+        /* Content styling */
+        .hero-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            max-width: 90%;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            color: var(--text);
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 85%;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Decorative elements */
+        .hero-accent {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.05);
+            right: -200px;
+            top: -200px;
+            z-index: 1;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .ca-portrait {
+                width: 280px;
+                height: 280px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .hero-content, 
+            .hero-image {
+                width: 100%;
+                padding: 0;
+            }
+            
+            .ca-portrait {
+                transform: none;
+                margin: 0 auto 40px;
+                width: 250px;
+                height: 250px;
+            }
+            
+            header h1,
+            header p {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .hero-content {
+                padding-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header {
+                padding: 80px 0 100px;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .ca-portrait {
+                margin-top: 30px;
+                width: 200px;
+                height: 200px;
+                border-width: 6px;
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto 0;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: white;
+            padding: 35px 30px;
+            border-radius: 12px;
+            transition: all 0.3s;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(46,91,255,0.05);
+            border: 1px solid rgba(46,91,255,0.1);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(46,91,255,0.1);
+            border-color: rgba(46,91,255,0.2);
+        }
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(46,91,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--light);
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-text h2 {
+            margin-bottom: 25px;
+        }
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        .qualifications {
+            margin-top: 30px;
+        }
+        .qualifications li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        .qualifications li::before {
+            content: '✓';
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .about-img {
+            flex: 1;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 100%;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: white;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: white;
+            padding: 35px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            font-size: 5rem;
+            color: rgba(0,193,212,0.1);
+            position: absolute;
+            top: 10px;
+            right: 30px;
+            line-height: 1;
+        }
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-top: 25px;
+        }
+        .client-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .client-name {
+            font-weight: 600;
+        }
+        .client-company {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            position: relative;
+        }
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: white;
+            transform: skewY(-3deg);
+            z-index: 1;
+        }
+        .contact .container {
+            position: relative;
+            z-index: 2;
+        }
+        .contact .section-title {
+            color: white;
+        }
+        .contact .section-title::after {
+            background: var(--secondary);
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(46,91,255,0.1);
+        }
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        .footer-col ul li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a{
+            color: #245EDD;
+        }
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #245EDD;
+            border-radius: 50%;
+            transition: all 0.3s;
+            color: #fff;
+        }
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .about-img {
+                order: -1;
+                max-width: 80%;
+            }
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 0 80px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            p.tagline {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                margin-bottom: 40px;
+            }
+            .service-card,
+            .testimonial-card {
+                padding: 25px 20px;
+            }
+            .contact-form {
+                padding: 30px;
+            }
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- <div class="color-switcher">
+        <div class="color-option blue" onclick="changeColorScheme('default')"></div>
+        <div class="color-option teal" onclick="changeColorScheme('teal')"></div>
+        <div class="color-option maroon" onclick="changeColorScheme('maroon')"></div>
+    </div> -->
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/919876543210?text=Hi%20Mehta%20Associates,%20I%20need%20CA%20consultation" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us</span>
+    </a>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">M&A</div>
+                <div class="logo-text">Mehta <span>&</span> Associates</div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="active">Home</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#process">Our Process</a>
+                <a href="#testimonials">Clients</a>
+                <a href="#contact" class="btn btn-outline nav-cta">Get Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <header id="home">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="hero-badge">Chartered Accountants Since 2015</span>
+                    <h1>Precision Financial Solutions for Growing Businesses</h1>
+                    <p>CA Arjun Mehta and team provide tailored auditing, tax planning, and compliance strategies to optimize your financial health.</p>
+                    <div class="hero-btns">
+                        <a href="#services" class="btn">Our Services</a>
+                        <a href="#contact" class="btn btn-outline">Get Free Consultation</a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <!-- Replace with your client's professional photo -->
+                    <img src="profile-pic.jpg" 
+                         alt="CA Arjun Mehta" 
+                         class="ca-portrait">
+                </div>
+            </div>
+            
+            <!-- Decorative circle -->
+            <div class="hero-accent"></div>
+        </div>
+    </header>    
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Specialized Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Statutory Audits</h3>
+                    <p>Comprehensive compliance audits under Companies Act 2013 with detailed reporting for stakeholders.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Tax Planning & Filing</h3>
+                    <p>Strategic tax planning, ITR filing, TDS compliance, and representation before IT Department.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Internal Audits</h3>
+                    <p>Risk-based internal audits to strengthen controls and improve operational efficiency.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>GST Advisory</h3>
+                    <p>End-to-end GST compliance including registration, returns, refunds, and litigation support.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Business Consulting</h3>
+                    <p>Financial modeling, fundraising support, and growth strategy for startups and SMEs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Accounting Services</h3>
+                    <p>Bookkeeping, payroll processing, and financial statement preparation using Tally & QuickBooks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">About Our Firm</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Founded in 2012 by <strong>CA Arjun Mehta</strong>, our firm has grown to become one of Mumbai's most trusted names in audit and taxation services. We combine technical expertise with practical business understanding to deliver solutions that matter.</p>
+                    <p>Our team of 8 qualified professionals has served over 200 clients across retail, manufacturing, IT services, and hospitality sectors.</p>
+                    <div class="qualifications">
+                        <h3>Our Credentials:</h3>
+                        <ul>
+                            <li>Registered with ICAI (Membership No.: 123456)</li>
+                            <li>GST Practitioner Certification (GSTP56789)</li>
+                            <li>Empaneled Auditor with multiple nationalized banks</li>
+                            <li>ISO 9001:2015 Certified Quality Management</li>
+                        </ul>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Our Mumbai Office" class="about-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Arjun Mehta & Co. transformed our financial operations. Their GST advisory helped us claim ₹8.7 lakh in input tax credits we didn't know we were eligible for. Their team is responsive, knowledgeable, and truly cares about client success."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priya Shah" class="client-img">
+                        <div>
+                            <div class="client-name">Priya Shah</div>
+                            <div class="client-company">Director, Spice Route Restaurants</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"As a startup founder, compliance was my biggest worry. Arjun's team not only handled all our tax filings but also helped structure our funding rounds. They're more than CAs - they're strategic partners."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Desai" class="client-img">
+                        <div>
+                            <div class="client-name">Rahul Desai</div>
+                            <div class="client-company">CEO, TechNova Solutions</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"After a bad experience with another CA firm, we switched to Arjun Mehta & Co. The difference was night and day. Our audit was completed 3 weeks ahead of schedule with zero queries from regulators. Highly recommended!"</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Neha Patel" class="client-img">
+                        <div>
+                            <div class="client-name">Neha Patel</div>
+                            <div class="client-company">CFO, Mumbai Textiles Ltd.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="e.g. Rajesh Kumar" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="e.g. rajesh@yourbusiness.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="e.g. 9876543210">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Needed</label>
+                        <select id="service">
+                            <option value="">Select a service</option>
+                            <option value="audit">Statutory Audit</option>
+                            <option value="tax">Tax Filing & Planning</option>
+                            <option value="gst">GST Compliance</option>
+                            <option value="consulting">Business Consulting</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How Can We Help You?</label>
+                        <textarea id="message" rows="5" placeholder="Tell us about your requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Arjun Mehta & Co.</h3>
+                    <p>Chartered Accountants & Tax Consultants committed to excellence in financial services since 2012.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Client Stories</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 302, Business Tower, Andheri East, Mumbai - 400069</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> contact@arjunmehtaca.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="year"></span> Arjun Mehta & Co. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        // Color Scheme Switcher
+        function changeColorScheme(scheme) {
+            document.body.classList.remove('color-scheme-teal', 'color-scheme-maroon');
+            if (scheme === 'teal') document.body.classList.add('color-scheme-teal');
+            if (scheme === 'maroon') document.body.classList.add('color-scheme-maroon');
+        }
+
+        // WhatsApp Number Updater (for multiple team members)
+        function setWhatsAppNumber(number, name) {
+            const waLink = document.querySelector('.whatsapp-float');
+            waLink.href = `https://wa.me/${number}?text=Hi%20${encodeURIComponent(name)},%20I%20need%20CA%20consultation`;
+        }
+        
+        // Set your client's WhatsApp number
+        setWhatsAppNumber('919876543210', 'Mehta Associates');
+        // Auto-update year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Active link highlighting on scroll
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
