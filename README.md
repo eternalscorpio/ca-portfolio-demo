@@ -1,5 +1,5 @@
 
-# Chartered Accountants Portfolio**  
+# Chartered Accountants Portfolio
 
 **A professional, responsive portfolio website for CA Arjun Mehta & Associates, featuring modern design, WhatsApp integration, and multiple color schemes.**  
 
